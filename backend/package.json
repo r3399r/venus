@@ -15,11 +15,13 @@
     "build": "webpack --config webpack.config.js",
     "pre:commit": "run-s lint test:coverage build",
     "pre:dev": "run-s fix test:coverage",
-    "pre:deploy": "run-s clean build"
+    "pre:deploy": "run-s clean build",
+    "richmenu":"ts-node src/richmenu/index.ts"
   },
   "license": "ISC",
   "dependencies": {
     "@line/bot-sdk": "^7.5.2",
+    "dotenv": "^16.0.3",
     "inversify": "^6.0.1",
     "lodash": "^4.17.21",
     "pg": "^8.8.0",
