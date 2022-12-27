@@ -3,3 +3,4 @@ tmp
 dist
 lib
 coverage
+packaged.yaml
