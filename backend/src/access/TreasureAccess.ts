@@ -36,6 +36,14 @@ export class TreasureAccess {
     });
   }
 
+  public async findByUserIdAndStage(userId: string, stage: number) {
+    const qr = await this.database.getQueryRunner();
+
+    return await qr.manager.findOne<Treasure>(TreasureEntity.name, {
+      where: { userId, stage },
+    });
+  }
+
   public async update(input: Treasure) {
     const qr = await this.database.getQueryRunner();
     const entity = new TreasureEntity();

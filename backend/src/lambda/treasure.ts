@@ -11,6 +11,7 @@ import {
 } from 'src/celestial-service/model/Lambda';
 import { TreasureService } from 'src/logic/TreasureService';
 import { PutTreasureRequest } from 'src/model/Api';
+import { BindingsHelper } from 'src/util/BindingsHelper';
 
 export async function treasure(
   event: LambdaEvent,
@@ -18,6 +19,11 @@ export async function treasure(
 ): Promise<LambdaOutput> {
   let service: TreasureService | null = null;
   try {
+    BindingsHelper.bindClientConfig({
+      channelAccessToken: String(process.env.CHANNEL_TOKEN),
+      channelSecret: String(process.env.CHANNEL_SECRET),
+    });
+    console.log(JSON.stringify(event));
     service = bindings.get(TreasureService);
     let res: unknown;
 

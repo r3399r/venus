@@ -2,35 +2,55 @@ import { Profile } from '@liff/get-profile';
 import liff from '@line/liff';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import treasureEndpoint from '../api/treasureEndpoint';
 import { QuestionForm } from '../model/Form';
 
 const Stage1 = () => {
   const [profile, setProfile] = useState<Profile>();
   const { register, handleSubmit } = useForm<QuestionForm>();
-
-  const [ans, setAns] = useState<string>();
+  const [wrong, setWrong] = useState<boolean>(false);
+  const [congrat, setCongrat] = useState<boolean>(false);
+  const [lock, setLock] = useState<boolean>(false);
 
   useEffect(() => {
     liff.ready.then(() => liff.getProfile()).then((res) => setProfile(res));
   }, []);
 
   const onSubmit = (data: QuestionForm) => {
-    setAns(data.answer);
-    liff.sendMessages([{ type: 'text', text: '恭喜通過第一關' }]).then(() => liff.closeWindow());
+    if (!profile) return;
+    setWrong(false);
+    setLock(true);
+    treasureEndpoint
+      .putTreasure({
+        userId: profile.userId,
+        stage: 1,
+        answer: data.answer,
+      })
+      .then(() => setCongrat(true))
+      .catch(() => {
+        setWrong(true);
+        setLock(false);
+      });
   };
 
   if (!profile) return <></>;
 
   return (
     <>
-      <div className="text-center">hello {profile.userId}</div>
+      <div className="mx-2">題目：1=1=?</div>
+      <div className="text-center mt-2">請輸入您的答案：</div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col">
-        <input {...register('answer')} className="border-2 border-solid border-black h-10 p-2" />
-        <button type="submit" className="bg-yellow-200 h-10 p-2">
+        <input
+          {...register('answer')}
+          className="border-2 border-solid border-black h-10 p-2"
+          disabled={lock}
+        />
+        <button type="submit" className="bg-yellow-200 h-10 p-2" disabled={lock}>
           確定
         </button>
       </form>
-      <div>{ans}</div>
+      {congrat && <div className="text-center text-green-500">恭喜答對！</div>}
+      {wrong && <div className="text-center text-red-500">不對喔！</div>}
     </>
   );
 };

@@ -25,8 +25,17 @@ export async function chat(
         case 'treasure':
           await service.replyTreasure(event.events[0]);
           break;
+        case 'record':
+          await service.replyRecord(event.events[0]);
+          break;
+        case 'print':
+          await service.replyPrint(event.events[0]);
+          break;
         case 'finish#2':
           await service.replyFinish2(event.events[0]);
+          break;
+        case 'done':
+          await service.replyDone(event.events[0]);
           break;
       }
   } catch (e) {

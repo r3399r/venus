@@ -48,8 +48,8 @@ const main = async () => {
           height: 135,
         },
         action: {
-          type: 'message',
-          text: '2',
+          type: 'uri',
+          uri: 'https://drive.google.com/drive/folders/1O6ib9S5ZZBvxse0zN6itL-mx2-JgMxFn?usp=sharing',
         },
       },
       {
@@ -65,18 +65,18 @@ const main = async () => {
           displayText: '婚禮尋寶',
         },
       },
-      {
-        bounds: {
-          x: 0,
-          y: 135,
-          width: 266,
-          height: 135,
-        },
-        action: {
-          type: 'message',
-          text: '4',
-        },
-      },
+      // {
+      //   bounds: {
+      //     x: 0,
+      //     y: 135,
+      //     width: 266,
+      //     height: 135,
+      //   },
+      //   action: {
+      //     type: 'message',
+      //     text: '4',
+      //   },
+      // },
       {
         bounds: {
           x: 266,
@@ -85,8 +85,9 @@ const main = async () => {
           height: 135,
         },
         action: {
-          type: 'message',
-          text: '5',
+          type: 'postback',
+          data: 'print',
+          displayText: '印卡讚',
         },
       },
       {
@@ -97,8 +98,9 @@ const main = async () => {
           height: 135,
         },
         action: {
-          type: 'message',
-          text: '6',
+          type: 'postback',
+          data: 'record',
+          displayText: '婚禮紀錄',
         },
       },
     ],

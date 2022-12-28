@@ -30,12 +30,12 @@ aws cloudformation package --template-file aws/cloudformation/template.yaml --ou
 aws cloudformation deploy --template-file packaged.yaml --stack-name $project-$env-stack --parameter-overrides TargetEnvr=$env Project=$project SubDomain=$subDomain Domain=$domain --no-fail-on-empty-changeset --s3-bucket y-cf-midway-singapore
 echo ====================================================================================
 
-# echo deploy frontend to S3...
-# cd ../frontend
-# export liff=$(aws ssm get-parameter --name $project-$env-liff | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
-# npm i
-# npm run build
-# mkdir -p ./dist/img
-# cp -R ../backend/public/img ./dist
-# aws s3 sync ./dist s3://$project-$env-y --delete --cache-control no-cache
-# echo ====================================================================================
+echo deploy frontend to S3...
+cd ../frontend
+export liff=$(aws ssm get-parameter --name $project-$env-liff | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
+npm i
+npm run build
+mkdir -p ./dist/img
+cp -R ../backend/public/img ./dist
+aws s3 sync ./dist s3://$project-$env-y --delete --cache-control no-cache
+echo ====================================================================================

@@ -39,6 +39,28 @@ export class ChatService {
     ]);
   }
 
+  public async replyRecord(event: PostbackEvent) {
+    await this.client.replyMessage(event.replyToken, [
+      {
+        type: 'text',
+        text: '等婚禮結束後，照片蒐集好就會上傳囉！',
+      },
+    ]);
+  }
+
+  public async replyPrint(event: PostbackEvent) {
+    await this.client.replyMessage(event.replyToken, [
+      {
+        type: 'text',
+        text: 'https://www.google.com',
+      },
+      {
+        type: 'text',
+        text: '請點擊上面的網址，輸入通行碼: 123456，就可以開始印照片囉！門口印表機處將有熱心的服務人員為您服務。',
+      },
+    ]);
+  }
+
   private getStageImgUrl(stage: number, data: Treasure[]) {
     const envr = process.env.ENVR;
     const welcomeUrl = `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg`;
@@ -66,26 +88,46 @@ export class ChatService {
               thumbnailImageUrl: this.getStageImgUrl(1, treasures),
               title: '第一關',
               text: '1+1=?',
-              actions: [
-                {
-                  type: 'uri',
-                  label: '我要答題',
-                  uri: `https://liff.line.me/${liffId}/treasure/stage1`,
-                },
-              ],
+              actions:
+                treasures.find((v) => v.stage === 1)?.status === 'pass'
+                  ? [
+                      {
+                        type: 'postback',
+                        label: '我要答題',
+                        data: 'done',
+                        displayText: '我要答題',
+                      },
+                    ]
+                  : [
+                      {
+                        type: 'uri',
+                        label: '我要答題',
+                        uri: `https://liff.line.me/${liffId}/treasure/stage1`,
+                      },
+                    ],
             },
             {
               thumbnailImageUrl: this.getStageImgUrl(2, treasures),
               title: '第二關',
               text: '去拍一張照',
-              actions: [
-                {
-                  type: 'postback',
-                  label: '我完成了',
-                  data: 'finish#2',
-                  displayText: '我完成了',
-                },
-              ],
+              actions:
+                treasures.find((v) => v.stage === 2)?.status === 'pass'
+                  ? [
+                      {
+                        type: 'postback',
+                        label: '我完成了',
+                        data: 'done',
+                        displayText: '我完成了',
+                      },
+                    ]
+                  : [
+                      {
+                        type: 'postback',
+                        label: '我完成了',
+                        data: 'finish#2',
+                        displayText: '我完成了',
+                      },
+                    ],
             },
           ],
         },
@@ -96,12 +138,18 @@ export class ChatService {
   public async replyFinish2(event: PostbackEvent) {
     const envr = process.env.ENVR;
 
-    const treasure = new TreasureEntity();
-    treasure.userId = event.source.userId ?? 'xxx';
-    treasure.stage = 2;
-    treasure.status = 'pending';
+    const res = await this.treasureAccess.findByUserId(
+      event.source.userId ?? 'xxx'
+    );
 
-    await this.treasureAccess.save(treasure);
+    if (res.find((v) => v.stage === 2) === undefined) {
+      const treasure = new TreasureEntity();
+      treasure.userId = event.source.userId ?? 'xxx';
+      treasure.stage = 2;
+      treasure.status = 'pending';
+
+      await this.treasureAccess.save(treasure);
+    }
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
@@ -111,6 +159,15 @@ export class ChatService {
         type: 'image',
         originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
         previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
+      },
+    ]);
+  }
+
+  public async replyDone(event: PostbackEvent) {
+    await this.client.replyMessage(event.replyToken, [
+      {
+        type: 'text',
+        text: '這關已經通過囉！',
       },
     ]);
   }
