@@ -68,11 +68,118 @@ Resources:
                 }
               }
             },
+            "/api/treasure": {
+              "get": {
+                "parameters": [{
+                  "name": "x-api-code",
+                  "in": "header",
+                  "required": true,
+                  "schema": {"type": "string"}
+                }],
+                "responses": {
+                  "200": {
+                    "description": "200 response",
+                    "headers": {
+                      "Access-Control-Allow-Origin": {
+                        "schema": {"type": "string"}
+                      }
+                    },
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/Empty"
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-amazon-apigateway-request-validator" : "Validate query string parameters and headers",
+                "x-amazon-apigateway-integration": {
+                  "type": "aws_proxy",
+                  "httpMethod": "POST",
+                  "uri": !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:278497686406:function:${Project}-${TargetEnvr}-treasure/invocations",
+                  "responses": {
+                    "default": {
+                      "statusCode": "200",
+                      "responseParameters": {
+                        "method.response.header.Access-Control-Allow-Origin": "'*'"
+                      }
+                    }
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "contentHandling": "CONVERT_TO_TEXT"
+                }
+              },
+              "put": {
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/putTreasure"
+                      }
+                    }
+                  },
+                  "required": true
+                },
+                "responses": {
+                  "200": {
+                    "description": "200 response",
+                    "headers": {
+                      "Access-Control-Allow-Origin": {
+                        "schema": {"type": "string"}
+                      }
+                    },
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/Empty"
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-amazon-apigateway-request-validator" : "Validate body, query string parameters, and headers",
+                "x-amazon-apigateway-integration": {
+                  "type": "aws_proxy",
+                  "httpMethod": "POST",
+                  "uri": !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:278497686406:function:${Project}-${TargetEnvr}-treasure/invocations",
+                  "responses": {
+                    "default": {
+                      "statusCode": "200",
+                      "responseParameters": {
+                        "method.response.header.Access-Control-Allow-Origin": "'*'"
+                      }
+                    }
+                  },
+                  "passthroughBehavior": "when_no_match",
+                  "contentHandling": "CONVERT_TO_TEXT"
+                }
+              }
+            }
           },
           "definitions": {
             "Empty": {
               "type": "object",
               "title": "Empty Schema"
+            },
+            "putTreasure": {
+              "type": "object",
+              "properties": {
+                "userId": {"type": "string"},
+                "stage": {"type": "number"},
+                "answer": {"type": "string"}
+              },
+              "required": ["userId","stage"]
+            }
+          },
+          "x-amazon-apigateway-request-validators" : {
+            "Validate body, query string parameters, and headers" : {
+              "validateRequestParameters" : true,
+              "validateRequestBody" : true
+            },
+            "Validate query string parameters and headers" : {
+              "validateRequestParameters" : true,
+              "validateRequestBody" : false
             }
           }
         }
@@ -104,9 +211,34 @@ Resources:
       Action: 'lambda:InvokeFunction'
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ServerlessApi}/*
-  #############################
-  ##### Cloudfront config #####
-  #############################
+  LambdaTreasure:
+    Type: AWS::Serverless::Function
+    Properties:
+      Architectures: [arm64]
+      Handler: index.treasure
+      Runtime: !Sub ${NodeJsVer}
+      FunctionName: !Sub ${Project}-${TargetEnvr}-treasure
+      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/${LambdaExecutionRole}"
+      CodeUri: ../../dist/webpack/lambda
+      MemorySize: 128
+      Environment:
+        Variables:
+          PROJECT: !Sub ${Project}
+          DB_CLUSTER: !Sub '{{resolve:ssm:${TargetEnvr}-db-cluster:1}}'
+          DB_HOST: !Sub '{{resolve:ssm:${TargetEnvr}-db-host:1}}'
+          DB_PWD: !Sub '{{resolve:ssm:${TargetEnvr}-db-pwd:1}}'
+          DB_USER: !Sub '{{resolve:ssm:${TargetEnvr}-db-user:1}}'
+  InvokePermissionTreasure:
+    Type: AWS::Lambda::Permission
+    DependsOn: [ServerlessApi, LambdaTreasure]
+    Properties:
+      FunctionName: !Sub ${Project}-${TargetEnvr}-treasure
+      Action: 'lambda:InvokeFunction'
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ServerlessApi}/*
+  #########################################
+  ##### Cloudfront and Route53 config #####
+  #########################################
   Route53RecordSet:
     Type: AWS::Route53::RecordSet
     Properties:

@@ -32,6 +32,6 @@ export async function chat(
   } catch (e) {
     console.error(e);
   } finally {
-    // await service?.cleanup();
+    await service?.cleanup();
   }
 }

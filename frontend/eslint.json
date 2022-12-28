@@ -28,12 +28,6 @@
       }
     ],
     "newline-before-return": ["error"],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": ["../*"]
-      }
-    ],
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
     "react/self-closing-comp": "warn",

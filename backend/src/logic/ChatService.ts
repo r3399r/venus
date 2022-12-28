@@ -1,13 +1,27 @@
 import { Client, PostbackEvent } from '@line/bot-sdk';
 import { inject, injectable } from 'inversify';
+import { DbAccess } from 'src/access/DbAccess';
+import { TreasureAccess } from 'src/access/TreasureAccess';
+import { Treasure } from 'src/model/Treasure';
+import { TreasureEntity } from 'src/model/TreasureEntity';
 
 /**
  * Service class for chat
  */
 @injectable()
 export class ChatService {
+  @inject(DbAccess)
+  private readonly dbAccess!: DbAccess;
+
+  @inject(TreasureAccess)
+  private readonly treasureAccess!: TreasureAccess;
+
   @inject(Client)
   private readonly client!: Client;
+
+  public async cleanup() {
+    await this.dbAccess.cleanup();
+  }
 
   public async replyMap(event: PostbackEvent) {
     await this.client.replyMessage(event.replyToken, [
@@ -25,9 +39,22 @@ export class ChatService {
     ]);
   }
 
-  public async replyTreasure(event: PostbackEvent) {
+  private getStageImgUrl(stage: number, data: Treasure[]) {
     const envr = process.env.ENVR;
+    const welcomeUrl = `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg`;
+    const passUrl = `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`;
+
+    return data.find((v) => v.stage === stage)?.status === 'pass'
+      ? passUrl
+      : welcomeUrl;
+  }
+
+  public async replyTreasure(event: PostbackEvent) {
     const liffId = process.env.LIFF_ID;
+    const treasures = await this.treasureAccess.findByUserId(
+      event.source.userId ?? 'xxx'
+    );
+
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'template',
@@ -36,7 +63,7 @@ export class ChatService {
           type: 'carousel',
           columns: [
             {
-              thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
+              thumbnailImageUrl: this.getStageImgUrl(1, treasures),
               title: '第一關',
               text: '1+1=?',
               actions: [
@@ -48,7 +75,7 @@ export class ChatService {
               ],
             },
             {
-              thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg`,
+              thumbnailImageUrl: this.getStageImgUrl(2, treasures),
               title: '第二關',
               text: '去拍一張照',
               actions: [
@@ -68,6 +95,13 @@ export class ChatService {
 
   public async replyFinish2(event: PostbackEvent) {
     const envr = process.env.ENVR;
+
+    const treasure = new TreasureEntity();
+    treasure.userId = event.source.userId ?? 'xxx';
+    treasure.stage = 2;
+    treasure.status = 'pending';
+
+    await this.treasureAccess.save(treasure);
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
