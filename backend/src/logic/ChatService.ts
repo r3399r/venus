@@ -26,6 +26,8 @@ export class ChatService {
   }
 
   public async replyTreasure(event: PostbackEvent) {
+    const envr = process.env.ENVR;
+    const liffId = process.env.LIFF_ID;
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'template',
@@ -34,21 +36,19 @@ export class ChatService {
           type: 'carousel',
           columns: [
             {
-              thumbnailImageUrl:
-                'https://venus-prod-y.s3.ap-southeast-1.amazonaws.com/img/pass.png',
+              thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
               title: '第一關',
               text: '1+1=?',
               actions: [
                 {
                   type: 'uri',
                   label: '我要答題',
-                  uri: 'https://liff.line.me/1657772422-B993wJeO/treasure/stage1',
+                  uri: `https://liff.line.me/${liffId}/treasure/stage1`,
                 },
               ],
             },
             {
-              thumbnailImageUrl:
-                'https://venus-prod-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg',
+              thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg`,
               title: '第二關',
               text: '去拍一張照',
               actions: [
@@ -67,6 +67,7 @@ export class ChatService {
   }
 
   public async replyFinish2(event: PostbackEvent) {
+    const envr = process.env.ENVR;
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
@@ -74,10 +75,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl:
-          'https://venus-prod-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg',
-        previewImageUrl:
-          'https://venus-prod-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg',
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
       },
     ]);
   }

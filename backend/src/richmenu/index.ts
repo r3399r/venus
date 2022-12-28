@@ -1,10 +1,16 @@
 import * as fs from 'fs';
 import { Client } from '@line/bot-sdk';
+import { SSM } from 'aws-sdk';
 
 const main = async () => {
+  const ssm = new SSM({ region: 'ap-southeast-1' });
+
+  const res = await ssm
+    .getParameter({ Name: `venus-${process.argv[2]}-token` })
+    .promise();
+
   const client = new Client({
-    channelAccessToken:
-      'BftrtYwOjrCnxby1vfHiZo1PXsU+TeL2q2gqHIDXaqKjzCf5ZuBpQmby4MgqYWxLVTjvpehTGZTkP3JND8s96DLpsfOrGlZr4IkbwG/EaA4IcAafBfJwCRTEkjq8yUggSrm7RCgP7wpnRXGWgLbv7wdB04t89/1O/w1cDnyilFU=',
+    channelAccessToken: res.Parameter?.Value ?? 'xx',
   });
 
   // delete existing richmenu

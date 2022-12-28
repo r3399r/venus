@@ -89,11 +89,13 @@ Resources:
       Environment:
         Variables:
           PROJECT: !Sub ${Project}
+          ENVR: !Sub ${TargetEnvr}
           DB_CLUSTER: !Sub '{{resolve:ssm:${TargetEnvr}-db-cluster:1}}'
           DB_HOST: !Sub '{{resolve:ssm:${TargetEnvr}-db-host:1}}'
           DB_PWD: !Sub '{{resolve:ssm:${TargetEnvr}-db-pwd:1}}'
           DB_USER: !Sub '{{resolve:ssm:${TargetEnvr}-db-user:1}}'
           CHANNEL_TOKEN: !Sub '{{resolve:ssm:${Project}-${TargetEnvr}-token:1}}'
+          LIFF_ID: !Sub '{{resolve:ssm:${Project}-${TargetEnvr}-liff:1}}'
   InvokePermissionChat:
     Type: AWS::Lambda::Permission
     DependsOn: [ServerlessApi, LambdaChat]

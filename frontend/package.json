@@ -2,15 +2,18 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "start": "VITE_LIFF_ID=$(aws ssm get-parameter --name venus-test-liff | jq .Parameter.Value | sed -e 's/^\"//' -e 's/\"$//') vite",
+    "compile": "tsc",
+    "build": "VITE_LIFF_ID=$liff vite build",
     "preview": "vite preview",
     "lint:es": "eslint -c ./eslint.json src",
     "fix:es": "npm run lint:es -- --fix",
     "lint:format": "prettier --list-different \"{src,public}/**/*.{tsx,ts,js,html,css,json}\"",
     "fix:format": "npm run lint:format -- --write",
     "lint": "run-s lint:*",
-    "fix": "run-s fix:*"
+    "fix": "run-s fix:*",
+    "pre:build": "run-s compile build",
+    "pre:commit": "run-s lint pre:build"
   },
   "dependencies": {
     "@line/liff": "2.21.4",

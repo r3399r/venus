@@ -7,7 +7,7 @@ function App() {
     liff.init({
       liffId: import.meta.env.VITE_LIFF_ID,
     });
-  });
+  }, []);
 
   return (
     <>
