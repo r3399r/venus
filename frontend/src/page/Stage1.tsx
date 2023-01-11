@@ -37,7 +37,7 @@ const Stage1 = () => {
 
   return (
     <>
-      <div className="mx-2">題目：1=1=?</div>
+      <div className="mx-2">題目：1+1=?</div>
       <div className="text-center mt-2">請輸入您的答案：</div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col">
         <input

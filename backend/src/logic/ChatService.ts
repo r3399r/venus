@@ -138,13 +138,25 @@ export class ChatService {
   public async replyFinish2(event: PostbackEvent) {
     const envr = process.env.ENVR;
 
-    const res = await this.treasureAccess.findByUserId(
-      event.source.userId ?? 'xxx'
-    );
+    if (event.source.userId === undefined) {
+      await this.client.replyMessage(event.replyToken, [
+        {
+          type: 'text',
+          text: '發生錯誤！你的 LINE 怪怪的...',
+        },
+      ]);
+
+      return;
+    }
+
+    const res = await this.treasureAccess.findByUserId(event.source.userId);
 
     if (res.find((v) => v.stage === 2) === undefined) {
+      const userProfile = await this.client.getProfile(event.source.userId);
+
       const treasure = new TreasureEntity();
-      treasure.userId = event.source.userId ?? 'xxx';
+      treasure.userId = event.source.userId;
+      treasure.displayName = userProfile.displayName;
       treasure.stage = 2;
       treasure.status = 'pending';
 

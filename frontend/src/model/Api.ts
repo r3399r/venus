@@ -7,3 +7,5 @@ export type PutTreasureRequest = {
   stage: number;
   answer?: string;
 };
+
+export type PutTreasureResponse = Treasure[];

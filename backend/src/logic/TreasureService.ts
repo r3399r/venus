@@ -25,22 +25,7 @@ export class TreasureService {
   }
 
   public async getTreasureList(): Promise<GetTreasureResponse> {
-    const res = await this.treasureAccess.find();
-
-    const userSet = new Set([...res.map((v) => v.userId)]);
-    const userArray = [...userSet];
-    const userProfile = await Promise.all(
-      userArray.map((v) => this.client.getProfile(v))
-    );
-
-    return res.map((v) => {
-      const user = userProfile.find((o) => o.userId === v.userId);
-
-      return {
-        ...v,
-        displayName: user?.displayName ?? '(unknown)',
-      };
-    });
+    return await this.treasureAccess.find();
   }
 
   public async reviseTreasureStatus(data: PutTreasureRequest) {
@@ -52,8 +37,11 @@ export class TreasureService {
 
     if (data.stage === 1)
       if (data.answer === '2') {
+        const userProfile = await this.client.getProfile(data.userId);
+
         const treasure = new TreasureEntity();
         treasure.userId = data.userId;
+        treasure.displayName = userProfile.displayName;
         treasure.stage = data.stage;
         treasure.status = 'pass';
 
@@ -62,6 +50,10 @@ export class TreasureService {
     else if (data.stage === 2) {
       if (res === null) return;
       await this.treasureAccess.update({ ...res, status: 'pass' });
+
+      return await this.treasureAccess.find();
     }
+
+    return;
   }
 }

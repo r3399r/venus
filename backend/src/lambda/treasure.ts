@@ -23,8 +23,9 @@ export async function treasure(
       channelAccessToken: String(process.env.CHANNEL_TOKEN),
       channelSecret: String(process.env.CHANNEL_SECRET),
     });
-    console.log(JSON.stringify(event));
+
     service = bindings.get(TreasureService);
+
     let res: unknown;
 
     switch (event.resource) {

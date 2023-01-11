@@ -10,6 +10,9 @@ export class TreasureEntity implements Treasure {
   @Column({ type: 'text', name: 'user_id' })
   userId!: string;
 
+  @Column({ type: 'text', name: 'display_name' })
+  displayName!: string;
+
   @Column({ type: 'float' })
   stage!: number;
 

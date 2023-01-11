@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-env=$1
+env=prod
 project=venus
 subDomain=wedding
 domain=celestialstudio.net
 
 echo ====================================================================================
-echo env: $env
+echo env: prod
 echo project: $project
 echo domain: $subDomain.$domain
 echo ====================================================================================

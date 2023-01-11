@@ -4,14 +4,13 @@ import { Treasure } from '../model/Treasure';
 
 const Status = () => {
   const [list, setList] = useState<Treasure[]>();
-  const [refresh, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
     treasureEndpoint.getTreasure().then((res) => setList(res.data));
-  }, [refresh]);
+  }, []);
 
   const onUpdate = (userId: string, stage: number) => () => {
-    treasureEndpoint.putTreasure({ userId, stage }).then(() => setRefresh(!refresh));
+    treasureEndpoint.putTreasure({ userId, stage }).then((res) => setList(res.data));
   };
 
   return (
