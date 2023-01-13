@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import treasureEndpoint from '../api/treasureEndpoint';
 import { Treasure } from '../model/Treasure';
 
-const Status = () => {
+const Treasure = () => {
   const [list, setList] = useState<Treasure[]>();
 
   useEffect(() => {
@@ -39,4 +39,4 @@ const Status = () => {
   );
 };
 
-export default Status;
+export default Treasure;

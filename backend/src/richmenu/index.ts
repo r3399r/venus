@@ -49,7 +49,7 @@ const main = async () => {
         },
         action: {
           type: 'uri',
-          uri: 'https://drive.google.com/drive/folders/1O6ib9S5ZZBvxse0zN6itL-mx2-JgMxFn?usp=sharing',
+          uri: 'https://wedding.celestialstudio.net/album',
         },
       },
       {

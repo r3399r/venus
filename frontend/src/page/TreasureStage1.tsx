@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import treasureEndpoint from '../api/treasureEndpoint';
 import { QuestionForm } from '../model/Form';
 
-const Stage1 = () => {
+const TreasureStage1 = () => {
   const [profile, setProfile] = useState<Profile>();
   const { register, handleSubmit } = useForm<QuestionForm>();
   const [wrong, setWrong] = useState<boolean>(false);
@@ -55,4 +55,4 @@ const Stage1 = () => {
   );
 };
 
-export default Stage1;
+export default TreasureStage1;

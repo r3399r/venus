@@ -1,4 +1,4 @@
-import { Client, PostbackEvent } from '@line/bot-sdk';
+import { Client, Message, PostbackEvent } from '@line/bot-sdk';
 import { inject, injectable } from 'inversify';
 import { DbAccess } from 'src/access/DbAccess';
 import { TreasureAccess } from 'src/access/TreasureAccess';
@@ -72,67 +72,84 @@ export class ChatService {
   }
 
   public async replyTreasure(event: PostbackEvent) {
+    const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
     const treasures = await this.treasureAccess.findByUserId(
       event.source.userId ?? 'xxx'
     );
+    const isCompleted = treasures.map((v) => v.status === 'pass').length === 2;
 
-    await this.client.replyMessage(event.replyToken, [
-      {
-        type: 'template',
-        altText: '婚禮尋寶',
-        template: {
-          type: 'carousel',
-          columns: [
-            {
-              thumbnailImageUrl: this.getStageImgUrl(1, treasures),
-              title: '第一關',
-              text: '1+1=?',
-              actions:
-                treasures.find((v) => v.stage === 1)?.status === 'pass'
-                  ? [
-                      {
-                        type: 'postback',
-                        label: '我要答題',
-                        data: 'done',
-                        displayText: '我要答題',
-                      },
-                    ]
-                  : [
-                      {
-                        type: 'uri',
-                        label: '我要答題',
-                        uri: `https://liff.line.me/${liffId}/treasure/stage1`,
-                      },
-                    ],
-            },
-            {
-              thumbnailImageUrl: this.getStageImgUrl(2, treasures),
-              title: '第二關',
-              text: '去拍一張照',
-              actions:
-                treasures.find((v) => v.stage === 2)?.status === 'pass'
-                  ? [
-                      {
-                        type: 'postback',
-                        label: '我完成了',
-                        data: 'done',
-                        displayText: '我完成了',
-                      },
-                    ]
-                  : [
-                      {
-                        type: 'postback',
-                        label: '我完成了',
-                        data: 'finish#2',
-                        displayText: '我完成了',
-                      },
-                    ],
-            },
-          ],
-        },
+    const messageStages: Message = {
+      type: 'template',
+      altText: '婚禮尋寶',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+            thumbnailImageUrl: this.getStageImgUrl(1, treasures),
+            title: '第一關',
+            text: '1+1=?',
+            actions:
+              treasures.find((v) => v.stage === 1)?.status === 'pass'
+                ? [
+                    {
+                      type: 'postback',
+                      label: '我要答題',
+                      data: 'done',
+                      displayText: '我要答題',
+                    },
+                  ]
+                : [
+                    {
+                      type: 'uri',
+                      label: '我要答題',
+                      uri: `https://liff.line.me/${liffId}/treasure/stage1`,
+                    },
+                  ],
+          },
+          {
+            thumbnailImageUrl: this.getStageImgUrl(2, treasures),
+            title: '第二關',
+            text: '去拍一張照',
+            actions:
+              treasures.find((v) => v.stage === 2)?.status === 'pass'
+                ? [
+                    {
+                      type: 'postback',
+                      label: '我完成了',
+                      data: 'done',
+                      displayText: '我完成了',
+                    },
+                  ]
+                : [
+                    {
+                      type: 'postback',
+                      label: '我完成了',
+                      data: 'finish#2',
+                      displayText: '我完成了',
+                    },
+                  ],
+          },
+        ],
       },
-    ]);
+    };
+
+    const messageCongrat: Message[] = [
+      {
+        type: 'text',
+        text: '恭喜你完成所有關卡！去找下面這個人拿禮物吧！',
+      },
+      {
+        type: 'image',
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
+      },
+    ];
+
+    await this.client.replyMessage(
+      event.replyToken,
+      isCompleted ? [messageStages, ...messageCongrat] : [messageStages]
+    );
   }
 
   public async replyFinish2(event: PostbackEvent) {

@@ -1,11 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
-import Stage1 from './page/Stage1';
-import Status from './page/Status';
+import Album from './page/Album';
+import Treasure from './page/Treasure';
+import TreasureStage1 from './page/TreasureStage1';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path={'treasure/stage1'} element={<Stage1 />} />
-    <Route path={'treasure'} element={<Status />} />
+    <Route path={'album'} element={<Album />} />
+    <Route path={'treasure'} element={<Treasure />} />
+    <Route path={'treasure/stage1'} element={<TreasureStage1 />} />
   </Routes>
 );
 
