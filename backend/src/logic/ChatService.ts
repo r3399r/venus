@@ -77,7 +77,8 @@ export class ChatService {
     const treasures = await this.treasureAccess.findByUserId(
       event.source.userId ?? 'xxx'
     );
-    const isCompleted = treasures.map((v) => v.status === 'pass').length === 2;
+    const isCompleted =
+      treasures.filter((v) => v.status === 'pass').length === 2;
 
     const messageStages: Message = {
       type: 'template',
