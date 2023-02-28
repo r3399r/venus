@@ -26,85 +26,72 @@ const main = async () => {
     selected: true,
     name: 'default',
     chatBarText: '選單',
-    areas: [],
-    // areas: [
-    //   {
-    //     bounds: {
-    //       x: 0,
-    //       y: 0,
-    //       width: 266,
-    //       height: 135,
-    //     },
-    //     action: {
-    //       type: 'postback',
-    //       data: 'location',
-    //       displayText: '時間地點',
-    //     },
-    //   },
-    //   {
-    //     bounds: {
-    //       x: 266,
-    //       y: 0,
-    //       width: 267,
-    //       height: 135,
-    //     },
-    //     action: {
-    //       type: 'uri',
-    //       uri: 'https://wedding.celestialstudio.net/album',
-    //     },
-    //   },
-    //   {
-    //     bounds: {
-    //       x: 533,
-    //       y: 0,
-    //       width: 267,
-    //       height: 135,
-    //     },
-    //     action: {
-    //       type: 'postback',
-    //       data: 'treasure',
-    //       displayText: '婚禮尋寶',
-    //     },
-    //   },
-    //   // {
-    //   //   bounds: {
-    //   //     x: 0,
-    //   //     y: 135,
-    //   //     width: 266,
-    //   //     height: 135,
-    //   //   },
-    //   //   action: {
-    //   //     type: 'message',
-    //   //     text: '4',
-    //   //   },
-    //   // },
-    //   {
-    //     bounds: {
-    //       x: 266,
-    //       y: 135,
-    //       width: 267,
-    //       height: 135,
-    //     },
-    //     action: {
-    //       type: 'postback',
-    //       data: 'print',
-    //       displayText: '印卡讚',
-    //     },
-    //   },
-    //   {
-    //     bounds: {
-    //       x: 533,
-    //       y: 135,
-    //       width: 267,
-    //       height: 135,
-    //     },
-    //     action: {
-    //       type: 'postback',
-    //       data: 'record',
-    //       displayText: '婚禮紀錄',
-    //     },
-    //   },
-    // ],
+    areas: [
+      {
+        bounds: {
+          x: 0,
+          y: 0,
+          width: 600,
+          height: 400,
+        },
+        action: {
+          type: 'postback',
+          data: 'location',
+          displayText: '時間地點',
+        },
+      },
+      {
+        bounds: {
+          x: 600,
+          y: 0,
+          width: 600,
+          height: 400,
+        },
+        action: {
+          type: 'postback',
+          data: 'treasure',
+          displayText: '婚禮尋寶',
+        },
+      },
+      {
+        bounds: {
+          x: 0,
+          y: 400,
+          width: 400,
+          height: 400,
+        },
+        action: {
+          type: 'postback',
+          data: 'print',
+          displayText: '印卡讚',
+        },
+      },
+      {
+        bounds: {
+          x: 400,
+          y: 400,
+          width: 400,
+          height: 400,
+        },
+        action: {
+          type: 'uri',
+          uri: 'https://wedding.celestialstudio.net/album',
+        },
+      },
+      {
+        bounds: {
+          x: 800,
+          y: 400,
+          width: 400,
+          height: 400,
+        },
+        action: {
+          type: 'postback',
+          data: 'record',
+          displayText: '婚禮紀錄',
+        },
+      },
+    ],
   });
   await client.setRichMenuImage(
     id,

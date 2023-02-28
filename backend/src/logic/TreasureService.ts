@@ -36,7 +36,7 @@ export class TreasureService {
     if (res !== null && res.status === 'pass') return;
 
     if (data.stage === 1)
-      if (data.answer === '2') {
+      if (data.answer === '翡翠烏參煨花菇') {
         const userProfile = await this.client.getProfile(data.userId);
 
         const treasure = new TreasureEntity();
@@ -47,7 +47,43 @@ export class TreasureService {
 
         await this.treasureAccess.save(treasure);
       } else throw new BadRequestError('wrong!');
-    else if (data.stage === 2) {
+    else if (data.stage === 2)
+      if (data.answer === '庭岳怡甄干蝦檸') {
+        const userProfile = await this.client.getProfile(data.userId);
+
+        const treasure = new TreasureEntity();
+        treasure.userId = data.userId;
+        treasure.displayName = userProfile.displayName;
+        treasure.stage = data.stage;
+        treasure.status = 'pass';
+
+        await this.treasureAccess.save(treasure);
+      } else throw new BadRequestError('wrong!');
+    else if (data.stage === 3)
+      if (data.answer === '5') {
+        const userProfile = await this.client.getProfile(data.userId);
+
+        const treasure = new TreasureEntity();
+        treasure.userId = data.userId;
+        treasure.displayName = userProfile.displayName;
+        treasure.stage = data.stage;
+        treasure.status = 'pass';
+
+        await this.treasureAccess.save(treasure);
+      } else throw new BadRequestError('wrong!');
+    else if (data.stage === 4)
+      if (data.answer === '庭岳&怡甄') {
+        const userProfile = await this.client.getProfile(data.userId);
+
+        const treasure = new TreasureEntity();
+        treasure.userId = data.userId;
+        treasure.displayName = userProfile.displayName;
+        treasure.stage = data.stage;
+        treasure.status = 'pass';
+
+        await this.treasureAccess.save(treasure);
+      } else throw new BadRequestError('wrong!');
+    else if (data.stage === 5) {
       if (res === null) return;
       await this.treasureAccess.update({ ...res, status: 'pass' });
 

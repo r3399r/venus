@@ -24,6 +24,7 @@ export class ChatService {
   }
 
   public async replyMap(event: PostbackEvent) {
+    const envr = process.env.ENVR;
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
@@ -35,6 +36,11 @@ export class ChatService {
         address: '台中市西屯區臺灣大道三段 33 號',
         longitude: 120.648341,
         latitude: 24.162702,
+      },
+      {
+        type: 'image',
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/map.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/map.jpg`,
       },
     ]);
   }
@@ -78,7 +84,7 @@ export class ChatService {
       event.source.userId ?? 'xxx'
     );
     const isCompleted =
-      treasures.filter((v) => v.status === 'pass').length === 2;
+      treasures.filter((v) => v.status === 'pass').length === 5;
 
     const messageStages: Message = {
       type: 'template',
@@ -88,8 +94,8 @@ export class ChatService {
         columns: [
           {
             thumbnailImageUrl: this.getStageImgUrl(1, treasures),
-            title: '第一關',
-            text: '1+1=?',
+            title: '菜單1',
+            text: '第六道菜的名字？',
             actions:
               treasures.find((v) => v.stage === 1)?.status === 'pass'
                 ? [
@@ -110,10 +116,76 @@ export class ChatService {
           },
           {
             thumbnailImageUrl: this.getStageImgUrl(2, treasures),
-            title: '第二關',
-            text: '去拍一張照',
+            title: '菜單2',
+            text: '菜單上的組合字',
             actions:
               treasures.find((v) => v.stage === 2)?.status === 'pass'
+                ? [
+                    {
+                      type: 'postback',
+                      label: '我要答題',
+                      data: 'done',
+                      displayText: '我要答題',
+                    },
+                  ]
+                : [
+                    {
+                      type: 'uri',
+                      label: '我要答題',
+                      uri: `https://liff.line.me/${liffId}/treasure/stage2`,
+                    },
+                  ],
+          },
+          {
+            thumbnailImageUrl: this.getStageImgUrl(3, treasures),
+            title: '香檳塔',
+            text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
+            actions:
+              treasures.find((v) => v.stage === 3)?.status === 'pass'
+                ? [
+                    {
+                      type: 'postback',
+                      label: '我要答題',
+                      data: 'done',
+                      displayText: '我要答題',
+                    },
+                  ]
+                : [
+                    {
+                      type: 'uri',
+                      label: '我要答題',
+                      uri: `https://liff.line.me/${liffId}/treasure/stage3`,
+                    },
+                  ],
+          },
+          {
+            thumbnailImageUrl: this.getStageImgUrl(4, treasures),
+            title: '拍照背板',
+            text: '輸入拍照背板上的文字',
+            actions:
+              treasures.find((v) => v.stage === 4)?.status === 'pass'
+                ? [
+                    {
+                      type: 'postback',
+                      label: '我要答題',
+                      data: 'done',
+                      displayText: '我要答題',
+                    },
+                  ]
+                : [
+                    {
+                      type: 'uri',
+                      label: '我要答題',
+                      uri: `https://liff.line.me/${liffId}/treasure/stage4`,
+                    },
+                  ],
+          },
+          {
+            thumbnailImageUrl: this.getStageImgUrl(5, treasures),
+            title: '印卡讚',
+            text: '用印卡讚洗一張照片吧！',
+            actions:
+              treasures.find((v) => v.stage === 5)?.status === 'pass'
                 ? [
                     {
                       type: 'postback',

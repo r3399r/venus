@@ -3,6 +3,7 @@ import liff from '@line/liff';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import treasureEndpoint from '../api/treasureEndpoint';
+import Loader from '../component/Loader';
 import { QuestionForm } from '../model/Form';
 
 const TreasureStage1 = () => {
@@ -10,7 +11,7 @@ const TreasureStage1 = () => {
   const { register, handleSubmit } = useForm<QuestionForm>();
   const [wrong, setWrong] = useState<boolean>(false);
   const [congrat, setCongrat] = useState<boolean>(false);
-  const [lock, setLock] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     liff.ready.then(() => liff.getProfile()).then((res) => setProfile(res));
@@ -19,7 +20,7 @@ const TreasureStage1 = () => {
   const onSubmit = (data: QuestionForm) => {
     if (!profile) return;
     setWrong(false);
-    setLock(true);
+    setLoading(true);
     treasureEndpoint
       .putTreasure({
         userId: profile.userId,
@@ -29,7 +30,9 @@ const TreasureStage1 = () => {
       .then(() => setCongrat(true))
       .catch(() => {
         setWrong(true);
-        setLock(false);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -37,20 +40,16 @@ const TreasureStage1 = () => {
 
   return (
     <>
-      <div className="mx-2">題目：1+1=?</div>
-      <div className="text-center mt-2">請輸入您的答案：</div>
+      <div className="mx-2">請輸入第六道菜的名字</div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col">
-        <input
-          {...register('answer')}
-          className="border-2 border-solid border-black h-10 p-2"
-          disabled={lock}
-        />
-        <button type="submit" className="bg-yellow-200 h-10 p-2" disabled={lock}>
+        <input {...register('answer')} className="border-2 border-solid border-black h-10 p-2" />
+        <button type="submit" className="bg-yellow-200 h-10 p-2">
           確定
         </button>
       </form>
       {congrat && <div className="text-center text-green-500">恭喜答對！</div>}
       {wrong && <div className="text-center text-red-500">不對喔！</div>}
+      <Loader open={loading} />
     </>
   );
 };
