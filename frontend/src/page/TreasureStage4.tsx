@@ -27,7 +27,18 @@ const TreasureStage4 = () => {
         stage: 4,
         answer: data.answer,
       })
-      .then(() => setCongrat(true))
+      .then(async () => {
+        setCongrat(true);
+        await liff.sendMessages([
+          {
+            type: 'text',
+            text: '婚禮尋寶',
+          },
+        ]);
+        setTimeout(() => {
+          liff.closeWindow();
+        }, 800);
+      })
       .catch(() => {
         setWrong(true);
       })

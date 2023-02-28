@@ -48,9 +48,8 @@ const main = async () => {
           height: 400,
         },
         action: {
-          type: 'postback',
-          data: 'treasure',
-          displayText: '婚禮尋寶',
+          type: 'message',
+          text: '婚禮尋寶',
         },
       },
       {
