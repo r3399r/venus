@@ -31,8 +31,9 @@ export class ChatService {
     const envr = process.env.ENVR;
     await this.client.replyMessage(event.replyToken, [
       {
-        type: 'text',
-        text: '112/3/26 (日) 午宴',
+        type: 'image',
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.png`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.png`,
       },
       {
         type: 'location',
@@ -62,13 +63,19 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
-        text: 'https://www.google.com',
-      },
-      {
-        type: 'text',
-        text: '請點擊上面的網址，輸入通行碼: 123456，就可以開始印照片囉！門口印表機處將有熱心的服務人員為您服務。',
+        text: '此功能在婚禮當天會使用到，敬請期待！',
       },
     ]);
+    // await this.client.replyMessage(event.replyToken, [
+    //   {
+    //     type: 'text',
+    //     text: 'https://www.google.com',
+    //   },
+    //   {
+    //     type: 'text',
+    //     text: '請點擊上面的網址，輸入通行碼: 123456，就可以開始印照片囉！門口印表機處將有熱心的服務人員為您服務。',
+    //   },
+    // ]);
   }
 
   private getTemplateColumn1 = (treasures: Treasure[]): TemplateColumn => {
