@@ -32,8 +32,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.png`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.png`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.jpg`,
       },
       {
         type: 'location',
