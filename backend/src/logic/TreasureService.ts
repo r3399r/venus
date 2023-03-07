@@ -36,7 +36,10 @@ export class TreasureService {
     if (res !== null && res.status === 'pass') return;
 
     if (data.stage === 1)
-      if (data.answer === '翡翠烏參煨花菇') {
+      if (
+        data.answer &&
+        ['西檸雞球拼腐皮捲', '西檸雞球拚腐皮捲'].includes(data.answer)
+      ) {
         const userProfile = await this.client.getProfile(data.userId);
 
         const treasure = new TreasureEntity();
@@ -60,7 +63,7 @@ export class TreasureService {
         await this.treasureAccess.save(treasure);
       } else throw new BadRequestError('wrong!');
     else if (data.stage === 3)
-      if (data.answer === '5') {
+      if (data.answer && ['兔子', '黑輪'].includes(data.answer)) {
         const userProfile = await this.client.getProfile(data.userId);
 
         const treasure = new TreasureEntity();
@@ -72,7 +75,7 @@ export class TreasureService {
         await this.treasureAccess.save(treasure);
       } else throw new BadRequestError('wrong!');
     else if (data.stage === 4)
-      if (data.answer === '庭岳&怡甄') {
+      if (data.answer && ['5', '五', '５'].includes(data.answer)) {
         const userProfile = await this.client.getProfile(data.userId);
 
         const treasure = new TreasureEntity();
@@ -83,7 +86,22 @@ export class TreasureService {
 
         await this.treasureAccess.save(treasure);
       } else throw new BadRequestError('wrong!');
-    else if (data.stage === 5) {
+    else if (data.stage === 5)
+      if (
+        data.answer &&
+        ['庭岳&怡甄', '庭岳 & 怡甄', '庭岳＆怡甄'].includes(data.answer)
+      ) {
+        const userProfile = await this.client.getProfile(data.userId);
+
+        const treasure = new TreasureEntity();
+        treasure.userId = data.userId;
+        treasure.displayName = userProfile.displayName;
+        treasure.stage = data.stage;
+        treasure.status = 'pass';
+
+        await this.treasureAccess.save(treasure);
+      } else throw new BadRequestError('wrong!');
+    else if (data.stage === 6) {
       if (res === null) return;
       await this.treasureAccess.update({ ...res, status: 'pass' });
 

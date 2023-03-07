@@ -5,6 +5,7 @@ import TreasureStage1 from './page/TreasureStage1';
 import TreasureStage2 from './page/TreasureStage2';
 import TreasureStage3 from './page/TreasureStage3';
 import TreasureStage4 from './page/TreasureStage4';
+import TreasureStage5 from './page/TreasureStage5';
 
 const AppRoutes = () => (
   <Routes>
@@ -14,6 +15,7 @@ const AppRoutes = () => (
     <Route path={'treasure/stage2'} element={<TreasureStage2 />} />
     <Route path={'treasure/stage3'} element={<TreasureStage3 />} />
     <Route path={'treasure/stage4'} element={<TreasureStage4 />} />
+    <Route path={'treasure/stage5'} element={<TreasureStage5 />} />
   </Routes>
 );
 

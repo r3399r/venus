@@ -50,6 +50,9 @@ export async function chat(
         case 'done4':
           await service.replyDone(event.events[0], 4);
           break;
+        case 'done5':
+          await service.replyDone(event.events[0], 5);
+          break;
       }
   } catch (e) {
     console.error(e);

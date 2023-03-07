@@ -87,7 +87,7 @@ export class ChatService {
       ? {
           thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
           title: '菜單1',
-          text: '第六道菜的名字？',
+          text: '倒數第二道菜的名字？',
           actions: [
             {
               type: 'postback',
@@ -100,7 +100,7 @@ export class ChatService {
       : {
           thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage1.jpg`,
           title: '菜單1',
-          text: '第六道菜的名字？',
+          text: '倒數第二道菜的名字？',
           actions: [
             {
               type: 'uri',
@@ -151,9 +151,9 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '香檳塔',
-          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass3-1.jpg`,
+          title: '座位禮',
+          text: '座位禮的餅乾看起來像什麼動物呢？',
           actions: [
             {
               type: 'postback',
@@ -164,9 +164,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage3.png`,
-          title: '香檳塔',
-          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage3-1.jpg`,
+          title: '座位禮',
+          text: '座位禮的餅乾看起來像什麼動物呢？',
           actions: [
             {
               type: 'uri',
@@ -185,8 +185,8 @@ export class ChatService {
     return isPass
       ? {
           thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '拍照背板',
-          text: '輸入拍照背板上的文字',
+          title: '香檳塔',
+          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
           actions: [
             {
               type: 'postback',
@@ -197,9 +197,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage4.jpg`,
-          title: '拍照背板',
-          text: '輸入拍照背板上的文字',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage4.png`,
+          title: '香檳塔',
+          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
           actions: [
             {
               type: 'uri',
@@ -210,11 +210,44 @@ export class ChatService {
         };
   };
 
-  private getTemplateColumn5 = (): TemplateColumn => {
+  private getTemplateColumn5 = (treasures: Treasure[]): TemplateColumn => {
+    const envr = process.env.ENVR;
+    const liffId = process.env.LIFF_ID;
+    const isPass = treasures.find((v) => v.stage === 5)?.status === 'pass';
+
+    return isPass
+      ? {
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
+          title: '拍照背板',
+          text: '輸入拍照背板上的文字',
+          actions: [
+            {
+              type: 'postback',
+              label: '我要看答案',
+              data: 'done5',
+              displayText: '我要看答案',
+            },
+          ],
+        }
+      : {
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage5-1.jpg`,
+          title: '拍照背板',
+          text: '輸入拍照背板上的文字',
+          actions: [
+            {
+              type: 'uri',
+              label: '我要答題',
+              uri: `https://liff.line.me/${liffId}/treasure/stage5`,
+            },
+          ],
+        };
+  };
+
+  private getTemplateColumn6 = (): TemplateColumn => {
     const envr = process.env.ENVR;
 
     return {
-      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage5.jpg`,
+      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage6.jpg`,
       title: '印卡讚',
       text: '用印卡讚洗一張照片吧！',
       actions: [
@@ -248,7 +281,8 @@ export class ChatService {
             this.getTemplateColumn2(treasures),
             this.getTemplateColumn3(treasures),
             this.getTemplateColumn4(treasures),
-            this.getTemplateColumn5(),
+            this.getTemplateColumn5(treasures),
+            this.getTemplateColumn6(),
           ],
         },
       },
@@ -274,13 +308,16 @@ export class ChatService {
     let text = '';
 
     if (stage === 1)
-      text = '答案是「翡翠烏參煨花菇」\n這道菜是我們最喜歡的菜！';
+      text =
+        '答案是「西檸雞球拼腐皮捲」\n這道菜是我們最喜歡的菜，您一定要嚐嚐看！';
     else if (stage === 2)
       text = '答案是「庭岳怡甄干蝦檸」\n庭岳與怡甄感謝您的到來～';
     else if (stage === 3)
+      text = '答案是「兔子」或「黑輪」\n我們有養一隻兔子叫做黑輪喔！';
+    else if (stage === 4)
       text =
         '答案是「5」\n香檳塔象徵堅不可摧的愛情，彼此互相扶持、永浴愛河，雙雙握住一瓶香檳，慢慢由上而下倒入，代表著源遠流長、細水長流的愛情，藉由一層層的香檳塔，將幸福層層疊起';
-    else if (stage === 4)
+    else if (stage === 5)
       text = '答案是「庭岳&怡甄」\n婚宴結束時要來跟我們合影喔！';
 
     await this.client.replyMessage(event.replyToken, [

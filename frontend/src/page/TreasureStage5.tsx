@@ -6,7 +6,7 @@ import treasureEndpoint from '../api/treasureEndpoint';
 import Loader from '../component/Loader';
 import { QuestionForm } from '../model/Form';
 
-const TreasureStage4 = () => {
+const TreasureStage5 = () => {
   const [profile, setProfile] = useState<Profile>();
   const { register, handleSubmit } = useForm<QuestionForm>();
   const [wrong, setWrong] = useState<boolean>(false);
@@ -24,7 +24,7 @@ const TreasureStage4 = () => {
     treasureEndpoint
       .putTreasure({
         userId: profile.userId,
-        stage: 4,
+        stage: 5,
         answer: data.answer,
       })
       .then(async () => {
@@ -51,7 +51,7 @@ const TreasureStage4 = () => {
 
   return (
     <>
-      <div className="mx-2">香檳塔有幾層？</div>
+      <div className="mx-2">請輸入拍照背板上的文字</div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col">
         <input {...register('answer')} className="border-2 border-solid border-black h-10 p-2" />
         <button type="submit" className="bg-yellow-200 h-10 p-2">
@@ -65,4 +65,4 @@ const TreasureStage4 = () => {
   );
 };
 
-export default TreasureStage4;
+export default TreasureStage5;

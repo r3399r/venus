@@ -51,7 +51,7 @@ const TreasureStage3 = () => {
 
   return (
     <>
-      <div className="mx-2">香檳塔有幾層？</div>
+      <div className="mx-2">請輸入答案</div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col">
         <input {...register('answer')} className="border-2 border-solid border-black h-10 p-2" />
         <button type="submit" className="bg-yellow-200 h-10 p-2">
