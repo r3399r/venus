@@ -260,12 +260,12 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
-        text: '帶著你的照片去找下面這個人吧！他會讓你過關，他應該坐在最後一排',
+        text: '帶著你的照片去找下面這個人吧！他會讓你過關，他應該坐在XXX',
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/mbappe.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/liyun.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/liyun.jpg`,
       },
     ]);
   }
