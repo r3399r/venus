@@ -32,8 +32,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/invitation.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/invitation.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/invitation.jpg`,
       },
       {
         type: 'location',
@@ -44,8 +44,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/map.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/map.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/map.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/map.jpg`,
       },
     ]);
   }
@@ -82,12 +82,14 @@ export class ChatService {
     const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
     const isPass = treasures.find((v) => v.stage === 1)?.status === 'pass';
+    const title = '菜單1';
+    const question = '倒數第二道菜的名字？';
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '菜單1',
-          text: '倒數第二道菜的名字？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass1.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'postback',
@@ -98,9 +100,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage1.jpg`,
-          title: '菜單1',
-          text: '倒數第二道菜的名字？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage1.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'uri',
@@ -115,12 +117,14 @@ export class ChatService {
     const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
     const isPass = treasures.find((v) => v.stage === 2)?.status === 'pass';
+    const title = '菜單2';
+    const question = '菜單上的組合字';
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '菜單2',
-          text: '菜單上的組合字',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass2.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'postback',
@@ -131,9 +135,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/welcome.jpg`,
-          title: '菜單2',
-          text: '菜單上的組合字',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage2.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'uri',
@@ -148,12 +152,14 @@ export class ChatService {
     const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
     const isPass = treasures.find((v) => v.stage === 3)?.status === 'pass';
+    const title = '位上禮';
+    const question = '位上禮的餅乾看起來像什麼動物呢？';
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass3-1.jpg`,
-          title: '座位禮',
-          text: '座位禮的餅乾看起來像什麼動物呢？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass3.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'postback',
@@ -164,9 +170,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage3-1.jpg`,
-          title: '座位禮',
-          text: '座位禮的餅乾看起來像什麼動物呢？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage3.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'uri',
@@ -181,12 +187,15 @@ export class ChatService {
     const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
     const isPass = treasures.find((v) => v.stage === 4)?.status === 'pass';
+    const title = '香檳塔';
+    const question =
+      '香檳塔的堆疊規則1,3,6,10，總共20個杯子，你知道他有幾層嗎？';
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '香檳塔',
-          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass4.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'postback',
@@ -197,9 +206,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage4.png`,
-          title: '香檳塔',
-          text: '香檳塔的堆疊規則1,3,6,10,15，總共35個杯子，你知道他有幾層嗎？',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage4.png`,
+          title,
+          text: question,
           actions: [
             {
               type: 'uri',
@@ -213,13 +222,15 @@ export class ChatService {
   private getTemplateColumn5 = (treasures: Treasure[]): TemplateColumn => {
     const envr = process.env.ENVR;
     const liffId = process.env.LIFF_ID;
+    const title = '拍照背板';
     const isPass = treasures.find((v) => v.stage === 5)?.status === 'pass';
+    const question = '拍照背板上有什麼文字呢？';
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/pass.png`,
-          title: '拍照背板',
-          text: '輸入拍照背板上的文字',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass5.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'postback',
@@ -230,9 +241,9 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage5-1.jpg`,
-          title: '拍照背板',
-          text: '輸入拍照背板上的文字',
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage5.jpg`,
+          title,
+          text: question,
           actions: [
             {
               type: 'uri',
@@ -247,7 +258,7 @@ export class ChatService {
     const envr = process.env.ENVR;
 
     return {
-      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/stage6.jpg`,
+      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage6.jpg`,
       title: '印卡讚',
       text: '用印卡讚洗一張照片吧！',
       actions: [
@@ -269,7 +280,7 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
-        text: '完成尋寶活動之後會有我們精心準備的禮物可以拿喔！',
+        text: '我們設計了尋寶活動，希望您可以好好享受這場婚宴！完成尋寶活動會有驚喜喔！',
       },
       {
         type: 'template',
@@ -294,12 +305,12 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
-        text: '帶著你的照片去找下面這個人吧！他會讓你過關，他應該坐在XXX',
+        text: '帶著你的照片去找下面這個人吧！他會讓你過關',
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/liyun.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img/liyun.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/liyun.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/liyun.jpg`,
       },
     ]);
   }
@@ -316,7 +327,7 @@ export class ChatService {
       text = '答案是「兔子」或「黑輪」\n我們有養一隻兔子叫做黑輪喔！';
     else if (stage === 4)
       text =
-        '答案是「5」\n香檳塔象徵堅不可摧的愛情，彼此互相扶持、永浴愛河，雙雙握住一瓶香檳，慢慢由上而下倒入，代表著源遠流長、細水長流的愛情，藉由一層層的香檳塔，將幸福層層疊起';
+        '答案是「4」\n香檳塔象徵堅不可摧的愛情，彼此互相扶持、永浴愛河，雙雙握住一瓶香檳，慢慢由上而下倒入，代表著源遠流長、細水長流的愛情，藉由一層層的香檳塔，將幸福層層疊起';
     else if (stage === 5)
       text = '答案是「庭岳&怡甄」\n婚宴結束時要來跟我們合影喔！';
 

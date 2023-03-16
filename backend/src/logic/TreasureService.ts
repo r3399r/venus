@@ -75,7 +75,7 @@ export class TreasureService {
         await this.treasureAccess.save(treasure);
       } else throw new BadRequestError('wrong!');
     else if (data.stage === 4)
-      if (data.answer && ['5', '五', '５'].includes(data.answer)) {
+      if (data.answer && ['4', '四'].includes(data.answer)) {
         const userProfile = await this.client.getProfile(data.userId);
 
         const treasure = new TreasureEntity();
