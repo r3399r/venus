@@ -12,15 +12,6 @@ echo project: $project
 echo domain: $subDomain.$domain
 echo ====================================================================================
 
-# echo execute db scripts...
-# cd ../db
-# host=$(aws ssm get-parameter --name $env-db-host | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
-# user=$(aws ssm get-parameter --name $env-db-user | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
-# pwd=$(aws ssm get-parameter --name $env-db-pwd | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
-# cluster=$(aws ssm get-parameter --name $env-db-cluster | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
-# psql postgresql://$user:$pwd@$host:26257/$cluster.$project -f deploy.sql
-# echo ====================================================================================
-
 echo deploy backend AWS...
 cd ../backend
 npm i
@@ -35,7 +26,7 @@ cd ../frontend
 export liff=$(aws ssm get-parameter --name $project-$env-liff | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
 npm i
 npm run build
-mkdir -p ./dist/img03161252
-cp -R ../backend/public/img03161252 ./dist
+mkdir -p ./dist/img03162132
+cp -R ../backend/public/img03162132 ./dist
 aws s3 sync ./dist s3://$project-$env-y --delete --cache-control no-cache
 echo ====================================================================================

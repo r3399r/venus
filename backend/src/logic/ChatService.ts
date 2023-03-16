@@ -32,8 +32,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/invitation.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/invitation.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/invitation.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/invitation.jpg`,
       },
       {
         type: 'location',
@@ -44,8 +44,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/map.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/map.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/map.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/map.jpg`,
       },
     ]);
   }
@@ -87,7 +87,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass1.jpg`,
           title,
           text: question,
           actions: [
@@ -100,7 +100,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage1.jpg`,
           title,
           text: question,
           actions: [
@@ -122,7 +122,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass2.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass2.jpg`,
           title,
           text: question,
           actions: [
@@ -135,7 +135,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage2.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.jpg`,
           title,
           text: question,
           actions: [
@@ -157,7 +157,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass3.jpg`,
           title,
           text: question,
           actions: [
@@ -170,7 +170,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage3.jpg`,
           title,
           text: question,
           actions: [
@@ -193,7 +193,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass4.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass4.jpg`,
           title,
           text: question,
           actions: [
@@ -206,7 +206,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage4.png`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage4.png`,
           title,
           text: question,
           actions: [
@@ -228,7 +228,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/pass5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass5.jpg`,
           title,
           text: question,
           actions: [
@@ -241,7 +241,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage5.jpg`,
           title,
           text: question,
           actions: [
@@ -258,7 +258,7 @@ export class ChatService {
     const envr = process.env.ENVR;
 
     return {
-      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/stage6.jpg`,
+      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage6.jpg`,
       title: '印卡讚',
       text: '用印卡讚洗一張照片吧！',
       actions: [
@@ -305,12 +305,12 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'text',
-        text: '帶著你的照片去找下面這個人吧！他會讓你過關',
+        text: '帶著你的照片去找榮恩衛斯立耘吧！他會告訴你接下來該怎麼做',
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/liyun.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03161252/liyun.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/liyun.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/liyun.jpg`,
       },
     ]);
   }
@@ -320,7 +320,7 @@ export class ChatService {
 
     if (stage === 1)
       text =
-        '答案是「西檸雞球拼腐皮捲」\n這道菜是我們最喜歡的菜，您一定要嚐嚐看！';
+        '答案是「西檸雞球拼腐皮捲」\n這道菜是我們很喜歡的菜，您一定要嚐嚐！';
     else if (stage === 2)
       text = '答案是「庭岳怡甄干蝦檸」\n庭岳與怡甄感謝您的到來～';
     else if (stage === 3)
