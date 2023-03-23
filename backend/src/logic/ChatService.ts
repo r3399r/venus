@@ -60,22 +60,22 @@ export class ChatService {
   }
 
   public async replyPrint(event: PostbackEvent) {
+    const envr = process.env.ENVR;
     await this.client.replyMessage(event.replyToken, [
       {
+        type: 'image',
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/tutorial.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/tutorial.jpg`,
+      },
+      {
         type: 'text',
-        text: '此功能在婚禮當天會使用到，敬請期待！',
+        text: '通關密語：2️⃣5️⃣5️⃣2️⃣3️⃣\n🔰操作步驟:\n1. 點擊下方連結\n2. 輸入「通關密語」\n3. 點選「列印」，上傳照片合成專屬圖框\n4. 稍候片刻，至印卡讚機台領取相片',
+      },
+      {
+        type: 'text',
+        text: 'http://p031.inkazan.com/index.php/fblogin',
       },
     ]);
-    // await this.client.replyMessage(event.replyToken, [
-    //   {
-    //     type: 'text',
-    //     text: 'https://www.google.com',
-    //   },
-    //   {
-    //     type: 'text',
-    //     text: '請點擊上面的網址，輸入通行碼: 123456，就可以開始印照片囉！門口印表機處將有熱心的服務人員為您服務。',
-    //   },
-    // ]);
   }
 
   private getTemplateColumn1 = (treasures: Treasure[]): TemplateColumn => {
