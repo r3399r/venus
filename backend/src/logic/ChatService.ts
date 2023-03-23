@@ -118,7 +118,7 @@ export class ChatService {
     const liffId = process.env.LIFF_ID;
     const isPass = treasures.find((v) => v.stage === 2)?.status === 'pass';
     const title = '菜單2';
-    const question = '菜單上的組合字';
+    const question = '菜單上的組合字 (點圖可以看放大圖)';
 
     return isPass
       ? {
@@ -135,9 +135,14 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.png`,
           title,
           text: question,
+          defaultAction: {
+            type: 'uri',
+            label: '我要看大圖',
+            uri: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.png`,
+          },
           actions: [
             {
               type: 'uri',
@@ -260,7 +265,7 @@ export class ChatService {
     return {
       thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage6.jpg`,
       title: '印卡讚',
-      text: '用印卡讚洗一張照片吧！',
+      text: '點擊選單左下角的「印卡讚」，用印卡讚洗一張照片吧！',
       actions: [
         {
           type: 'postback',
