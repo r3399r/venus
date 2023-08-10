@@ -26,7 +26,7 @@ cd ../frontend
 export liff=$(aws ssm get-parameter --name $project-$env-liff | jq .Parameter.Value | sed -e 's/^"//' -e 's/"$//')
 npm i
 npm run build
-mkdir -p ./dist/img03162132
-cp -R ../backend/public/img03162132 ./dist
+mkdir -p ./dist/img08101622
+cp -R ../backend/public/img08101622 ./dist
 aws s3 sync ./dist s3://$project-$env-y --delete --cache-control no-cache
 echo ====================================================================================

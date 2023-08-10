@@ -32,8 +32,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/invitation.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/invitation.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/invitation.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/invitation.jpg`,
       },
       {
         type: 'location',
@@ -44,17 +44,169 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/map.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/map.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/map.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/map.jpg`,
       },
     ]);
   }
 
   public async replyRecord(event: PostbackEvent) {
+    const envr = process.env.ENVR;
     await this.client.replyMessage(event.replyToken, [
       {
-        type: 'text',
-        text: '等婚禮結束後，照片蒐集好就會上傳囉！',
+        type: 'imagemap',
+        baseUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/imagemap`,
+        altText: '我們的婚禮紀錄',
+        baseSize: {
+          width: 1040,
+          height: 1040,
+        },
+        actions: [
+          {
+            type: 'uri',
+            label: '結婚登記',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354585007&tpl=publicfoldergrid',
+            area: {
+              x: 0,
+              y: 0,
+              width: 520,
+              height: 208,
+            },
+          },
+          {
+            type: 'uri',
+            label: '訂婚',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579608&tpl=publicfoldergrid',
+            area: {
+              x: 0,
+              y: 208,
+              width: 520,
+              height: 208,
+            },
+          },
+          {
+            type: 'uri',
+            label: '迎娶',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579153&tpl=publicfoldergrid',
+            area: {
+              x: 0,
+              y: 416,
+              width: 520,
+              height: 208,
+            },
+          },
+          {
+            type: 'uri',
+            label: '印卡讚-賓客上傳',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354578641&tpl=publicfoldergrid',
+            area: {
+              x: 0,
+              y: 624,
+              width: 260,
+              height: 416,
+            },
+          },
+          {
+            type: 'uri',
+            label: '印卡讚-美顏相機',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354577635&tpl=publicfoldergrid',
+            area: {
+              x: 260,
+              y: 624,
+              width: 260,
+              height: 416,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-迎賓',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354580337&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 0,
+              width: 520,
+              height: 173,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-一進',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581051&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 173,
+              width: 520,
+              height: 173,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-二進',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581660&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 346,
+              width: 520,
+              height: 174,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-逐桌敬酒',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354582484&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 520,
+              width: 520,
+              height: 173,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-送客',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354583217&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 693,
+              width: 520,
+              height: 173,
+            },
+          },
+          {
+            type: 'uri',
+            label: '宴客-新娘房&花園',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354584192&tpl=publicfoldergrid',
+            area: {
+              x: 520,
+              y: 866,
+              width: 520,
+              height: 174,
+            },
+          },
+          {
+            type: 'uri',
+            label: '全部',
+            linkUri:
+              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk',
+            area: {
+              x: 454,
+              y: 476,
+              width: 130,
+              height: 84,
+            },
+          },
+        ],
       },
     ]);
   }
@@ -64,8 +216,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/tutorial.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/tutorial.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/tutorial.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/tutorial.jpg`,
       },
       {
         type: 'text',
@@ -87,7 +239,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass1.jpg`,
           title,
           text: question,
           actions: [
@@ -100,7 +252,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage1.jpg`,
           title,
           text: question,
           actions: [
@@ -122,7 +274,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass2.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass2.jpg`,
           title,
           text: question,
           actions: [
@@ -135,13 +287,13 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.png`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage2.png`,
           title,
           text: question,
           defaultAction: {
             type: 'uri',
             label: '我要看大圖',
-            uri: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage2.png`,
+            uri: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage2.png`,
           },
           actions: [
             {
@@ -162,7 +314,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass3.jpg`,
           title,
           text: question,
           actions: [
@@ -175,7 +327,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage3.jpg`,
           title,
           text: question,
           actions: [
@@ -198,7 +350,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass4.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass4.jpg`,
           title,
           text: question,
           actions: [
@@ -211,7 +363,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage4.png`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage4.png`,
           title,
           text: question,
           actions: [
@@ -233,7 +385,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/pass5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass5.jpg`,
           title,
           text: question,
           actions: [
@@ -246,7 +398,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage5.jpg`,
           title,
           text: question,
           actions: [
@@ -263,7 +415,7 @@ export class ChatService {
     const envr = process.env.ENVR;
 
     return {
-      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/stage6.jpg`,
+      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage6.jpg`,
       title: '印卡讚',
       text: '點擊選單左下角的「印卡讚」，用印卡讚洗一張照片吧！',
       actions: [
@@ -314,8 +466,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/liyun.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img03162132/liyun.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/liyun.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/liyun.jpg`,
       },
     ]);
   }
