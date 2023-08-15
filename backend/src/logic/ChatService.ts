@@ -32,8 +32,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/invitation.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/invitation.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/invitation.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/invitation.jpg`,
       },
       {
         type: 'location',
@@ -44,8 +44,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/map.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/map.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/map.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/map.jpg`,
       },
     ]);
   }
@@ -55,7 +55,7 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'imagemap',
-        baseUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/imagemap`,
+        baseUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/imagemap`,
         altText: '我們的婚禮紀錄',
         baseSize: {
           width: 1040,
@@ -71,7 +71,7 @@ export class ChatService {
               x: 0,
               y: 0,
               width: 520,
-              height: 208,
+              height: 260,
             },
           },
           {
@@ -81,9 +81,9 @@ export class ChatService {
               'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579608&tpl=publicfoldergrid',
             area: {
               x: 0,
-              y: 208,
+              y: 260,
               width: 520,
-              height: 208,
+              height: 260,
             },
           },
           {
@@ -93,9 +93,9 @@ export class ChatService {
               'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579153&tpl=publicfoldergrid',
             area: {
               x: 0,
-              y: 416,
+              y: 520,
               width: 520,
-              height: 208,
+              height: 260,
             },
           },
           {
@@ -105,9 +105,9 @@ export class ChatService {
               'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354578641&tpl=publicfoldergrid',
             area: {
               x: 0,
-              y: 624,
+              y: 780,
               width: 260,
-              height: 416,
+              height: 260,
             },
           },
           {
@@ -117,9 +117,9 @@ export class ChatService {
               'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354577635&tpl=publicfoldergrid',
             area: {
               x: 260,
-              y: 624,
+              y: 780,
               width: 260,
-              height: 416,
+              height: 260,
             },
           },
           {
@@ -200,10 +200,10 @@ export class ChatService {
             linkUri:
               'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk',
             area: {
-              x: 454,
-              y: 476,
-              width: 130,
-              height: 84,
+              x: 449,
+              y: 453,
+              width: 141,
+              height: 133,
             },
           },
         ],
@@ -216,8 +216,8 @@ export class ChatService {
     await this.client.replyMessage(event.replyToken, [
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/tutorial.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/tutorial.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/tutorial.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/tutorial.jpg`,
       },
       {
         type: 'text',
@@ -239,7 +239,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/pass1.jpg`,
           title,
           text: question,
           actions: [
@@ -252,7 +252,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage1.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage1.jpg`,
           title,
           text: question,
           actions: [
@@ -274,7 +274,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass2.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/pass2.jpg`,
           title,
           text: question,
           actions: [
@@ -287,13 +287,13 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage2.png`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage2.png`,
           title,
           text: question,
           defaultAction: {
             type: 'uri',
             label: '我要看大圖',
-            uri: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage2.png`,
+            uri: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage2.png`,
           },
           actions: [
             {
@@ -314,7 +314,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/pass3.jpg`,
           title,
           text: question,
           actions: [
@@ -327,7 +327,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage3.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage3.jpg`,
           title,
           text: question,
           actions: [
@@ -350,7 +350,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass4.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/pass4.jpg`,
           title,
           text: question,
           actions: [
@@ -363,7 +363,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage4.png`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage4.png`,
           title,
           text: question,
           actions: [
@@ -385,7 +385,7 @@ export class ChatService {
 
     return isPass
       ? {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/pass5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/pass5.jpg`,
           title,
           text: question,
           actions: [
@@ -398,7 +398,7 @@ export class ChatService {
           ],
         }
       : {
-          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage5.jpg`,
+          thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage5.jpg`,
           title,
           text: question,
           actions: [
@@ -415,7 +415,7 @@ export class ChatService {
     const envr = process.env.ENVR;
 
     return {
-      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/stage6.jpg`,
+      thumbnailImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/stage6.jpg`,
       title: '印卡讚',
       text: '點擊選單左下角的「印卡讚」，用印卡讚洗一張照片吧！',
       actions: [
@@ -466,8 +466,8 @@ export class ChatService {
       },
       {
         type: 'image',
-        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/liyun.jpg`,
-        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08101622/liyun.jpg`,
+        originalContentUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/liyun.jpg`,
+        previewImageUrl: `https://venus-${envr}-y.s3.ap-southeast-1.amazonaws.com/img08150958/liyun.jpg`,
       },
     ]);
   }
