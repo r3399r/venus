@@ -66,7 +66,7 @@ export class ChatService {
             type: 'uri',
             label: '結婚登記',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354585007&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354585007&tpl=publicfoldergrid',
             area: {
               x: 0,
               y: 0,
@@ -78,7 +78,7 @@ export class ChatService {
             type: 'uri',
             label: '訂婚',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579608&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579608&tpl=publicfoldergrid',
             area: {
               x: 0,
               y: 260,
@@ -90,7 +90,7 @@ export class ChatService {
             type: 'uri',
             label: '迎娶',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579153&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354579153&tpl=publicfoldergrid',
             area: {
               x: 0,
               y: 520,
@@ -102,7 +102,7 @@ export class ChatService {
             type: 'uri',
             label: '印卡讚-賓客上傳',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354578641&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354578641&tpl=publicfoldergrid',
             area: {
               x: 0,
               y: 780,
@@ -114,7 +114,7 @@ export class ChatService {
             type: 'uri',
             label: '印卡讚-美顏相機',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354577635&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354577635&tpl=publicfoldergrid',
             area: {
               x: 260,
               y: 780,
@@ -126,7 +126,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-迎賓',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354580337&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354580337&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 0,
@@ -138,7 +138,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-一進',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581051&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581051&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 173,
@@ -150,7 +150,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-二進',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581660&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354581660&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 346,
@@ -162,7 +162,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-逐桌敬酒',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354582484&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354582484&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 520,
@@ -174,7 +174,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-送客',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354583217&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354583217&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 693,
@@ -186,7 +186,7 @@ export class ChatService {
             type: 'uri',
             label: '宴客-新娘房&花園',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354584192&tpl=publicfoldergrid',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk#folder=18354584192&tpl=publicfoldergrid',
             area: {
               x: 520,
               y: 866,
@@ -198,7 +198,7 @@ export class ChatService {
             type: 'uri',
             label: '全部',
             linkUri:
-              'https://u.pcloud.link/publink/show?code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk',
+              'https://u.pcloud.link/publink/show?openExternalBrowser=1&code=kZMJINVZJ6MRPB2qpK4WvbmuAa38159b9BJk',
             area: {
               x: 449,
               y: 453,
